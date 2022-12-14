@@ -2,7 +2,7 @@
 
 Here we attempt to prepare the relevant datasets enabling to predict essential proteins, starting from the published article [Predicting essential proteins by integrating orthology, gene expressions, and PPI networks](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195410). In particular, we aim to compute the number of species where proteins in S. cerevisiae are conserved (also the number of orthologs per species) and the average expression breadth of the orthologs of S. cerevisiae. The rationale for this is: proteins that are highly conserved and whose orthologs are broadly expressed are more likely to be essential proteins.
 
-Initially, we attempted to execute the federated query below at the SPARQL endpoint of OMA https://sparql.omabrowser.org/sparql. However, the query does not work as expected, due to problems running aggregations within SERVICE blocks. An extended discussion is provided in our [Jupyter notebook](UniProt-OMA-Bgee.ipynb). Below we provide the functional query, to be run on the Bgee site (aggregations are only performed locally).
+Initially, we attempted to execute the federated query below at the SPARQL endpoint of OMA https://sparql.omabrowser.org/sparql. However, the query does not work as expected, due to problems running aggregations within SERVICE blocks. An extended discussion is provided in our [Jupyter notebook](UniProt-OMA-Bgee.ipynb). This first attempt is provided in the query below.
 
 
 ```
