@@ -30,13 +30,13 @@ where {
       ?p orth:organism/obo:RO_0002162 taxon:559292.
       ?cluster a orth:OrthologsCluster.
       ?cluster orth:hasHomologousMember ?node1.
-      ?cluster orth:hasHomologousMember ?node2. 
-      ?node2 orth:hasHomologousMember* ?ortholog. 
+      ?cluster orth:hasHomologousMember ?node2.
+      ?node2 orth:hasHomologousMember* ?ortholog.
       ?node1 orth:hasHomologousMember* ?p.
       ?ortholog sio:SIO_010079 ?gene . #is encoded by
       ?gene lscr:xrefEnsemblGene ?orthologGeneEns .
       ?ortholog orth:organism/obo:RO_0002162 ?taxon.
-       filter(?node1 != ?node2) 
+       filter(?node1 != ?node2)
 
 # attempt to get expression breadth per ortholog from Bgee
 # this will fail given that ?orthologGeneEns is replaced with a URI at query time and cannot be used as a group by criterion
@@ -49,10 +49,12 @@ where {
                 ?expr a <http://purl.org/genex#Expression> .
                 ?expr genex:hasConfidenceLevel obo:CIO_0000029 . # high confidence level
                 ?expr genex:hasExpressionLevel ?exprLevel .
-                FILTER (?exprLevel > 99) # highly expressed      
+                FILTER (?exprLevel > 99) # highly expressed
                 ?expr genex:hasExpressionCondition ?cond .
                 ?cond genex:hasAnatomicalEntity ?anat .
 	} group by ?orthologGeneEns
   }
 } group by ?p ?taxon
 ```
+
+*Note: the error reported when running the query is related to a closing paranthesis "}" at line 12 in the query, but this is only due to replacing ?orthologousGeneEns with a URI, which leads to a syntactically incorrect query when trying to execute the Bgee SERVICE clause. This is evident when looking at the output of the relevant cell in our Jupyter notebook analysis.*
