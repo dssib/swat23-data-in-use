@@ -113,7 +113,7 @@ Select ?p ?species ?orthologGeneEns ?expr_breadth where {
             FILTER (?exprLevel > 99) # highly expressed      
             ?expr genex:hasExpressionCondition ?cond .
             ?cond genex:hasAnatomicalEntity ?anat .
-		} group by ?orthologGeneEns
+	} group by ?orthologGeneEns
     }
 }} group by ?p order by desc(?num_species_with_orthologs)
 ```
